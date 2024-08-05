@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Tags on CryptoEng</title>
+    <link>https://cryptoeng.de/blog/tags/</link>
+    <description>Recent content in Tags on CryptoEng</description>
+    <image>
+      <title>CryptoEng</title>
+      <url>https://cryptoeng.de/blog/papermod-cover.png</url>
+      <link>https://cryptoeng.de/blog/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 05 Aug 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://cryptoeng.de/blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Announcement</title>
+      <link>https://cryptoeng.de/blog/tags/announcement/</link>
+      <pubDate>Mon, 05 Aug 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://cryptoeng.de/blog/tags/announcement/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>IoT</title>
+      <link>https://cryptoeng.de/blog/tags/iot/</link>
+      <pubDate>Mon, 05 Aug 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://cryptoeng.de/blog/tags/iot/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>PQ</title>
+      <link>https://cryptoeng.de/blog/tags/pq/</link>
+      <pubDate>Mon, 05 Aug 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://cryptoeng.de/blog/tags/pq/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

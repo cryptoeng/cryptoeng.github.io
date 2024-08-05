@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=blog/livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Introducing hax 🎂 | CryptoEng</title>
+<meta name="keywords" content="release, announcement">
+<meta name="description" content="We are excited to announce the first release of hax">
+<meta name="author" content="Franziskus Kiefer &amp; Lucas Franceschino">
+<link rel="canonical" href="http://localhost:1313/blog/posts/hax-v0-1/">
+<link crossorigin="anonymous" href="/blog/assets/css/stylesheet.1b82bbed8b13f853704558d527b681efaea938ce91e6ae8903e8b19e73b1b0f8.css" integrity="sha256-G4K77YsT&#43;FNwRVjVJ7aB766pOM6R5q6JA&#43;ixnnOxsPg=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/blog/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/blog/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/blog/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/blog/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/blog/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/blog/posts/hax-v0-1/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+  
+
+<meta property="og:title" content="Introducing hax 🎂" />
+<meta property="og:description" content="We are excited to announce the first release of hax" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/blog/posts/hax-v0-1/" /><meta property="og:image" content="http://localhost:1313/blog/papermod-cover.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-10-20T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-10-20T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://localhost:1313/blog/papermod-cover.png"/>
+
+<meta name="twitter:title" content="Introducing hax 🎂"/>
+<meta name="twitter:description" content="We are excited to announce the first release of hax"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://localhost:1313/blog/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Introducing hax 🎂",
+      "item": "http://localhost:1313/blog/posts/hax-v0-1/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Introducing hax 🎂",
+  "name": "Introducing hax 🎂",
+  "description": "We are excited to announce the first release of hax",
+  "keywords": [
+    "release", "announcement"
+  ],
+  "articleBody": "This has been in the making for a while now. But we are finally happy to announce the first release of hax. It is still early days and we only tagged v0.1. But a ton of work has gone into this release.\nWait, what is hax?\nLet’s start at the beginning. A group of us started hacspec (high assurance crypto specifications), a language for specifying cryptographic primitives as the basis for formal verification, in early 2018 at the HACS workshop. After two iterations on hacspec the project outgrew the name and the initial crypto-oriented scope.\nHere comes hax. hax is a tool for high assurance translations that translates a large-ish subset of safe Rust into the formal languages accepted by proof assistants such as F* or Coq. Backends for other provers like EasyCrypt are under construction.\nThis is the result of joint work between the Prosecco team at Inria, Cryspen, and Prof. Spitters’ group at Aarhus University.\nThe key design principle behind hax is hat we want to build a usable tool for verifying Rust programs without forcing the user to commit to a specific proof environment. In the future, we hope multiple tool developers will find it fruitful to build backends for hax.\nSo what is hacspec now?\nhacspec is a purely functional subset of Rust that can be used, together with a hacspec standard library, to write succinct, executable, and verifiable specifications in Rust. These specifications can be translated into formal languages with hax.\nhax There are a number of Rust verification projects out there. See, for example, Rust Verify and the Rust Formal Methods Interest Group. While most existing tools try to precisely model the most complex bits the Rust language, hax aims to be a usable and pragmatic tool that can analyze the kind of code Rust developers write on a daily basis, while abstracting away or ignoring Rust features it does not support. We believe that it is important in practice to have a usable tool that can ingest large Rust crates to show properties on certain parts of the code, instead of getting stuck on hard corner cases.\nhax has two parts: the exporter and the engine.\nThe Exporter When hax is invoked on a Rust crate, the exporter hooks into the Rust compiler. Compiling a program, Rust transformes the user source code to various internal representations in an optimized fashion (essentially HIR, THIR and MIR, illustrated in the diagram below). While this is great within the compiler, those representations are not friendly to external tool consumption.\nThe hax exporter is a Rust driver that provides a bridge from those unstable internal representations to fixed and easy-to-consume ASTs1 (abstract syntax trees). The JSON node on the diagram below represents those ASTs.\nThe hax exporter is not opinionated toward the hax project: it can be used as a frontend to the Rust compiler in other projects. For example, we are working with the Aeneas project towards sharing the exporter code between the two tools.\nThe Engine The magic of hax really happens in the engine, written in OCaml. It directly consumes2 the output of the exporter, that is, the ASTs exported for your crate of choice.\nUpon the backend choice (for instance: shall we extract to F* or to Coq?), the engine proceeds to a sequence of typed3 program transformations, eventually landing into the sublanguage supported by the targeted language, e.g. F*.\nThe various program transformations are called phases. We have a dozen of them:\ntransforming and functionalizing for loops; functionalizing local mutation; rewrite functions with mutable references as inputs into state-passing code; and many more! Those phases are statically typed: for instance, making for loops functional is not possible on an AST that still contains local mutation. Such constraints are ensured statically, reducing opportunities for bugs.\nThis typed phase design allows us to target heterogeneous languages: for instance, we already support a backend in the imperative language of the SSProve Coq library. This comes with an automatic proof that it is equivalent to the functional interpretation. This can be seen as a case-by-case correctness proof of hax.\nThis design can be used as a template for the upcoming backend which targets the imperative language of EasyCrypt.\nUsage hax is still heavily under development. It is therefore recommended to install it straight from the git repository (see the Installation section in the readme).\nAfter installing it you can call it from any Rust crate.\ncargo hax into fstar This will extract the crate to F*. Similarly, cargo hax into coq will extract the crate to Coq.\nFor more options use\ncargo hax into --help Example We walk through a sample usage of hax based on an example. The example can be found in the git repository.\nGo to the proofs/fstar/extraction directory and run make. This will first call\ncargo hax into -i '-** +**::process_order' fstar in order to extract the process_order order function to F*. This demonstrates one particularly useful feature in hax, which allows extracting only a small portion or single function from a much larger crate. The argument -i '-** +**::process_order' tells hax to include the process_order function in any module and exclude (-**) everything else. In addition to the function itself, hax extracts all the required dependencies within the crate as well.\nRust fn process_order\u003cT\u003e(mut order: Order, other_side: \u0026mut BinaryHeap\u003cT\u003e) -\u003e (Vec\u003cMatch\u003e, Option\u003cOrder\u003e) where T: Into\u003cOrder\u003e + From\u003cOrder\u003e + Ord + Clone, { ... if let Some(m) = other_side .peek() .and_then(|other| Into::into(other.clone()).try_match(\u0026order)) { order.quantity -= m.quantity; let mut other: Order = Into::into(other_side.pop().unwrap()); other.quantity -= m.quantity; if other.quantity \u003e 0 { other_side.push(From::from(other.clone())); } matches.push(m); } else { done = true; } ... } F* match Core.Option.impl__and_then (Alloc.Collections.Binary_heap.impl_10__peek other_side \u003c: Core.Option.t_Option v_T) (fun other -\u003e impl__Order__try_match (Core.Convert.f_into (Core.Clone.f_clone other \u003c: v_T) \u003c: t_Order) order \u003c: Core.Option.t_Option t_Match) \u003c: Core.Option.t_Option t_Match with | Core.Option.Option_Some m -\u003e let order:t_Order = { order with f_quantity = order.f_quantity -! m.f_quantity } in let tmp0, out:(Alloc.Collections.Binary_heap.t_BinaryHeap v_T \u0026 Core.Option.t_Option v_T) = Alloc.Collections.Binary_heap.impl_9__pop other_side in let other_side:Alloc.Collections.Binary_heap.t_BinaryHeap v_T = tmp0 in let hoist1:Core.Option.t_Option v_T = out in let hoist2:v_T = Core.Option.impl__unwrap hoist1 in let (other: t_Order):t_Order = Core.Convert.f_into hoist2 in let other:t_Order = { other with f_quantity = other.f_quantity -! m.f_quantity } in let other_side:Alloc.Collections.Binary_heap.t_BinaryHeap v_T = if other.f_quantity \u003e. 0uL then let other_side:Alloc.Collections.Binary_heap.t_BinaryHeap v_T = Alloc.Collections.Binary_heap.impl_9__push other_side (Core.Convert.f_from (Core.Clone.f_clone other \u003c: t_Order) \u003c: v_T) in other_side else other_side in let matches:Alloc.Vec.t_Vec t_Match Alloc.Alloc.t_Global = Alloc.Vec.impl_1__push matches m in done, matches, order, other_side | _ -\u003e let done:bool = true in done, matches, order, other_side Then the makefile calls F* on the generated output. The successful typechecking in F* proves two properties on the Rust code.\nNon-panicking subtraction First, it shows that the lines with\norder.quantity -= m.quantity; do not underflow.\nConcretely, in Rust, the subtraction on u64 integers is a partial operation: the subtraction of x and y (x - y) is defined only when x is greater or equal to y such that x - y \u003e= 0.\nSuch a requirement cannot be expressed as a Rust type, thus Rust’s subtraction panics (in debug mode) when it is called with bad inputs.\nIn contrast, F* is ideal to express such types! We model Rust’s subtraction as a total function with a strong type signature:\nval ( -! ): x: u64 -\u003e y: u64 {x \u003e=. y} -\u003e u64 This strong signature implies a proof obligation: whenever this F* subtraction is used, F* won’t typecheck unless it finds a proof that x \u003e=. y holds.\nTherefore, typechecking in F* implies that order.quantity -= m.quantity; never underflows.\nNon-panicking unwrap Second, it shows that\nother_side.pop().unwrap() never panics, i.e. the pop always returns Some value and thus unwrap never panics.\nSimilarly to subtraction, in F*, using unwrap requires a proof that the option being unwrapped is not None.\nCall to Action hax is still under heavy development and there are many features we want to add, and many bugs to squash. We invite everyone to contribute to the project with new backends, contributing to the hax frontend or backend, or provide examples to exercise the tool.\nThe F* backend is currently being developed by the Inria Prosecco team, the Coq backend by the Aarhus team, and an EasyCrypt backend is in the works by the EasyCrypt team. We are also working with the Aeneas project to allow better interoperability between their sophisticated stateful Rust verification toolchain and hax.\nResources Zulip Git Repository Rust’s internal ASTs are very optimized in memory and require constantly to lookup things interactively with the Rust compiler. Instead, our ASTs are indirection-free trees packing as much informations as possible (e.g. types, attributes, spans…), ready for direct consumption. ↩︎\nThe exporter expose big ASTs as JSON. The Rust type definitions of those ASTs are automatically converted into OCaml type definition along with JSON serializer and deserializers, using JSON Schemas. ↩︎\nThe internal AST used by the hax engine is functorized. This enables AST transformations to be strongly typed. ↩︎\n",
+  "wordCount" : "1487",
+  "inLanguage": "en",
+  "datePublished": "2023-10-20T00:00:00Z",
+  "dateModified": "2023-10-20T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Franziskus Kiefer \u0026 Lucas Franceschino"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/blog/posts/hax-v0-1/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "CryptoEng",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/blog/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/blog/" accesskey="h" title="CryptoEng (Alt + H)">CryptoEng</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch"><li>|</li>
+                </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/blog/archives" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/blog/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/blog/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      Introducing hax 🎂
+    </h1>
+    <div class="post-description">
+      We are excited to announce the first release of hax
+    </div>
+    <div class="post-meta"><span title='2023-10-20 00:00:00 +0000 UTC'>October 20, 2023</span>&nbsp;·&nbsp;7 min&nbsp;·&nbsp;Franziskus Kiefer &amp; Lucas Franceschino
+
+</div>
+  </header> <div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#hax" aria-label="hax">hax</a><ul>
+                        
+                <li>
+                    <a href="#the-exporter" aria-label="The Exporter">The Exporter</a></li>
+                <li>
+                    <a href="#the-engine" aria-label="The Engine">The Engine</a></li></ul>
+                </li>
+                <li>
+                    <a href="#usage" aria-label="Usage">Usage</a></li>
+                <li>
+                    <a href="#example" aria-label="Example">Example</a><ul>
+                        
+                <li>
+                    <a href="#non-panicking-subtraction" aria-label="Non-panicking subtraction">Non-panicking subtraction</a></li>
+                <li>
+                    <a href="#non-panicking-unwrap" aria-label="Non-panicking unwrap">Non-panicking unwrap</a></li></ul>
+                </li>
+                <li>
+                    <a href="#call-to-action" aria-label="Call to Action">Call to Action</a></li>
+                <li>
+                    <a href="#resources" aria-label="Resources">Resources</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>This has been in the making for a while now.
+But we are finally happy to announce the first release of <code>hax</code>.
+It is still early days and we only tagged v0.1.
+But a ton of work has gone into this release.</p>
+<blockquote>
+<p>Wait, what is hax?</p>
+</blockquote>
+<p>Let&rsquo;s start at the beginning.
+A group of us started hacspec (high assurance crypto specifications),
+a language for specifying cryptographic primitives as the basis for formal verification, in
+early 2018 at the <a href="https://www.hacs-workshop.org/">HACS workshop</a>.
+After two
+<a href="https://github.com/hacs-workshop/hacspec">iterations</a> on
+<a href="https://github.com/hacspec/hacspec">hacspec</a> the project
+outgrew the name and the initial crypto-oriented scope.</p>
+<p>Here comes <strong>hax</strong>.
+hax is a tool for high assurance translations that translates a large-ish subset of
+safe Rust into the formal languages accepted by proof assistants such as
+<a href="https://www.fstar-lang.org/">F*</a> or <a href="https://coq.inria.fr/">Coq</a>.
+Backends for other provers like <a href="mhttps://github.com/EasyCrypt/easycrypt">EasyCrypt</a> are under construction.</p>
+<p>This is the result of joint work between the Prosecco team at
+<a href="https://prosecco.inria.fr/">Inria</a>, <a href="https://cryspen.com/">Cryspen</a>,
+and Prof. Spitters&rsquo; group at <a href="https://users-cs.au.dk/spitters/">Aarhus University</a>.</p>
+<p>The key design principle behind hax is hat we want to build a usable tool
+for verifying Rust programs without forcing the user to commit to a
+specific proof environment. In the future, we hope multiple tool
+developers will find it fruitful to build backends for hax.</p>
+<blockquote>
+<p>So what is hacspec now?</p>
+</blockquote>
+<p>hacspec is a purely functional subset of Rust that can be used, together with a hacspec
+standard library, to write succinct, executable, and verifiable specifications in
+Rust.
+These specifications can be translated into formal languages with hax.</p>
+<p><img loading="lazy" src="hax-high-level.png" alt=""  />
+</p>
+<h1 id="hax">hax<a hidden class="anchor" aria-hidden="true" href="#hax">#</a></h1>
+<p>There are a number of Rust verification projects out there.
+See,
+for example, <a href="https://sites.google.com/view/rustverify2023">Rust
+Verify</a> and the <a href="https://rust-formal-methods.github.io/">Rust Formal Methods Interest Group</a>.
+While most existing tools try to precisely model the most complex bits the Rust language,
+hax aims to be a usable and pragmatic tool that can analyze the kind of
+code Rust developers write on a daily basis, while abstracting away
+or ignoring Rust features it does not support.
+We believe that it is important in practice to have a usable tool that
+can ingest large Rust crates to show properties on certain parts of
+the code, instead of getting stuck on hard corner cases.</p>
+<p>hax has two parts: the exporter and the engine.</p>
+<h2 id="the-exporter">The Exporter<a hidden class="anchor" aria-hidden="true" href="#the-exporter">#</a></h2>
+<p>When hax is invoked on a Rust crate,
+the exporter hooks into the Rust compiler.
+Compiling a program,
+Rust transformes the user source code
+to various internal representations in an optimized fashion
+(essentially <a href="https://rustc-dev-guide.rust-lang.org/hir.html">HIR</a>, <a href="https://rustc-dev-guide.rust-lang.org/thir.html">THIR</a> and <a href="https://rustc-dev-guide.rust-lang.org/mir/index.html">MIR</a>, illustrated in the diagram below).
+While this is great within the compiler,
+those representations are not friendly to external tool consumption.</p>
+<p>The hax exporter is a
+<a href="https://rustc-dev-guide.rust-lang.org/rustc-driver.html">Rust driver</a>
+that provides a bridge
+from those unstable internal representations
+to fixed and easy-to-consume ASTs<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> (abstract syntax trees).
+The <code>JSON</code> node on the diagram below represents those ASTs.</p>
+<p><img loading="lazy" src="hax-low-level.png" alt=""  />
+</p>
+<p>The hax exporter is not opinionated toward the hax project:
+it can be used as a frontend to the Rust compiler in other projects.
+For example, we are working with the
+<a href="https://github.com/AeneasVerif/aeneas">Aeneas</a> project
+towards sharing the exporter code between
+<a href="https://github.com/AeneasVerif/aeneas/pull/35">the two tools</a>.</p>
+<h2 id="the-engine">The Engine<a hidden class="anchor" aria-hidden="true" href="#the-engine">#</a></h2>
+<p>The magic of hax really happens in the engine, written in OCaml.
+It directly consumes<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> the output of the exporter, that is,
+the ASTs exported for your crate of choice.</p>
+<p>Upon the backend choice (for instance: shall we extract to F* or to
+Coq?), the engine proceeds to a sequence of typed<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> program
+transformations, eventually landing into the sublanguage supported by
+the targeted language, e.g. F*.</p>
+<p>The various program transformations are called <em>phases</em>. We have a
+dozen of them:</p>
+<ul>
+<li>transforming and functionalizing <code>for</code> loops;</li>
+<li>functionalizing local mutation;</li>
+<li>rewrite functions with mutable references as inputs into
+state-passing code;</li>
+<li>and many more!</li>
+</ul>
+<p>Those phases are statically typed: for instance, making <code>for</code> loops
+functional is not possible on an AST that still contains local
+mutation. Such constraints are ensured statically, reducing
+opportunities for bugs.</p>
+<p>This typed phase design allows us to target heterogeneous languages:
+for instance, we already support a backend in the imperative language of the <a href="https://github.com/SSProve/">SSProve</a> Coq library.
+This comes with an <a href="https://eprint.iacr.org/2023/185">automatic proof</a> that it is equivalent to the functional interpretation.
+This can be seen as a case-by-case correctness proof of hax.</p>
+<p>This design can be used as a template for the upcoming backend which targets the imperative language of
+<a href="mhttps://github.com/EasyCrypt/easycrypt">EasyCrypt</a>.</p>
+<h1 id="usage">Usage<a hidden class="anchor" aria-hidden="true" href="#usage">#</a></h1>
+<p>hax is still heavily under development.
+It is therefore recommended to install it straight from the <a href="https://github.com/hacspec/hax">git repository</a>
+(see the <a href="https://github.com/hacspec/hax#installation">Installation section</a>
+in the readme).</p>
+<p>After installing it you can call it from any Rust crate.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cargo hax into fstar
+</span></span></code></pre></div><p>This will extract the crate to F*.
+Similarly, <code>cargo hax into coq</code> will extract the crate to Coq.</p>
+<p>For more options use</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cargo hax into --help
+</span></span></code></pre></div><h1 id="example">Example<a hidden class="anchor" aria-hidden="true" href="#example">#</a></h1>
+<p>We walk through a sample usage of hax based on an example.
+The example can be found in the <a href="https://github.com/hacspec/hax/tree/main/examples/limited-order-book">git repository</a>.</p>
+<p>Go to the <code>proofs/fstar/extraction</code> directory and run <code>make</code>.
+This will first call</p>
+<pre tabindex="0"><code>cargo hax into -i &#39;-** +**::process_order&#39; fstar
+</code></pre><p>in order to extract the <code>process_order</code> order function to F*.
+This demonstrates one particularly useful feature in hax, which allows extracting
+only a small portion or single function from a much larger crate.
+The argument <code>-i '-** +**::process_order'</code> tells hax to include the <code>process_order</code>
+function in any module and exclude (<code>-**</code>) everything else.
+In addition to the function itself, hax extracts all the required dependencies within
+the crate as well.</p>
+<details>
+<summary>Rust</summary>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="line"><span class="cl"><span class="k">fn</span> <span class="nf">process_order</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="k">mut</span><span class="w"> </span><span class="n">order</span>: <span class="nc">Order</span><span class="p">,</span><span class="w"> </span><span class="n">other_side</span>: <span class="kp">&amp;</span><span class="nc">mut</span><span class="w"> </span><span class="n">BinaryHeap</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="p">(</span><span class="nb">Vec</span><span class="o">&lt;</span><span class="n">Match</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="n">Order</span><span class="o">&gt;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="k">where</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">T</span>: <span class="nb">Into</span><span class="o">&lt;</span><span class="n">Order</span><span class="o">&gt;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">From</span><span class="o">&lt;</span><span class="n">Order</span><span class="o">&gt;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">Ord</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">Clone</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">..</span><span class="p">.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="kd">let</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">other_side</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">.</span><span class="n">peek</span><span class="p">()</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">.</span><span class="n">and_then</span><span class="p">(</span><span class="o">|</span><span class="n">other</span><span class="o">|</span><span class="w"> </span><span class="nb">Into</span>::<span class="n">into</span><span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="n">clone</span><span class="p">()).</span><span class="n">try_match</span><span class="p">(</span><span class="o">&amp;</span><span class="n">order</span><span class="p">))</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">order</span><span class="p">.</span><span class="n">quantity</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">quantity</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">other</span>: <span class="nc">Order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Into</span>::<span class="n">into</span><span class="p">(</span><span class="n">other_side</span><span class="p">.</span><span class="n">pop</span><span class="p">().</span><span class="n">unwrap</span><span class="p">());</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">other</span><span class="p">.</span><span class="n">quantity</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">quantity</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">other</span><span class="p">.</span><span class="n">quantity</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="n">other_side</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="nb">From</span>::<span class="n">from</span><span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="n">clone</span><span class="p">()));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">matches</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">m</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">done</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="o">..</span><span class="p">.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></div></details>
+<details>
+<summary>F*</summary>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ocaml" data-lang="ocaml"><span class="line"><span class="cl"><span class="k">match</span>
+</span></span><span class="line"><span class="cl">  <span class="nn">Core</span><span class="p">.</span><span class="nn">Option</span><span class="p">.</span><span class="n">impl__and_then</span> <span class="o">(</span><span class="nn">Alloc</span><span class="p">.</span><span class="nn">Collections</span><span class="p">.</span><span class="nn">Binary_heap</span><span class="p">.</span><span class="n">impl_10__peek</span> <span class="n">other_side</span>
+</span></span><span class="line"><span class="cl">      <span class="o">&lt;:</span>
+</span></span><span class="line"><span class="cl">      <span class="nn">Core</span><span class="p">.</span><span class="nn">Option</span><span class="p">.</span><span class="n">t_Option</span> <span class="n">v_T</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="o">(</span><span class="k">fun</span> <span class="n">other</span> <span class="o">-&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">impl__Order__try_match</span> <span class="o">(</span><span class="nn">Core</span><span class="p">.</span><span class="nn">Convert</span><span class="p">.</span><span class="n">f_into</span> <span class="o">(</span><span class="nn">Core</span><span class="p">.</span><span class="nn">Clone</span><span class="p">.</span><span class="n">f_clone</span> <span class="n">other</span> <span class="o">&lt;:</span> <span class="n">v_T</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">            <span class="o">&lt;:</span>
+</span></span><span class="line"><span class="cl">            <span class="n">t_Order</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">          <span class="n">order</span>
+</span></span><span class="line"><span class="cl">        <span class="o">&lt;:</span>
+</span></span><span class="line"><span class="cl">        <span class="nn">Core</span><span class="p">.</span><span class="nn">Option</span><span class="p">.</span><span class="n">t_Option</span> <span class="n">t_Match</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">  <span class="o">&lt;:</span>
+</span></span><span class="line"><span class="cl">  <span class="nn">Core</span><span class="p">.</span><span class="nn">Option</span><span class="p">.</span><span class="n">t_Option</span> <span class="n">t_Match</span>
+</span></span><span class="line"><span class="cl"><span class="k">with</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span> <span class="nn">Core</span><span class="p">.</span><span class="nn">Option</span><span class="p">.</span><span class="nc">Option_Some</span> <span class="n">m</span> <span class="o">-&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">let</span> <span class="n">order</span><span class="o">:</span><span class="n">t_Order</span> <span class="o">=</span> <span class="o">{</span> <span class="n">order</span> <span class="k">with</span> <span class="n">f_quantity</span> <span class="o">=</span> <span class="n">order</span><span class="o">.</span><span class="n">f_quantity</span> <span class="o">-!</span> <span class="n">m</span><span class="o">.</span><span class="n">f_quantity</span> <span class="o">}</span> <span class="k">in</span>
+</span></span><span class="line"><span class="cl">  <span class="k">let</span> <span class="n">tmp0</span><span class="o">,</span> <span class="n">out</span><span class="o">:(</span><span class="nn">Alloc</span><span class="p">.</span><span class="nn">Collections</span><span class="p">.</span><span class="nn">Binary_heap</span><span class="p">.</span><span class="n">t_BinaryHeap</span> <span class="n">v_T</span> <span class="o">&amp;</span>
+</span></span><span class="line"><span class="cl">    <span class="nn">Core</span><span class="p">.</span><span class="nn">Option</span><span class="p">.</span><span class="n">t_Option</span> <span class="n">v_T</span><span class="o">)</span> <span class="o">=</span>
+</span></span><span class="line"><span class="cl">    <span class="nn">Alloc</span><span class="p">.</span><span class="nn">Collections</span><span class="p">.</span><span class="nn">Binary_heap</span><span class="p">.</span><span class="n">impl_9__pop</span> <span class="n">other_side</span>
+</span></span><span class="line"><span class="cl">  <span class="k">in</span>
+</span></span><span class="line"><span class="cl">  <span class="k">let</span> <span class="n">other_side</span><span class="o">:</span><span class="nn">Alloc</span><span class="p">.</span><span class="nn">Collections</span><span class="p">.</span><span class="nn">Binary_heap</span><span class="p">.</span><span class="n">t_BinaryHeap</span> <span class="n">v_T</span> <span class="o">=</span> <span class="n">tmp0</span> <span class="k">in</span>
+</span></span><span class="line"><span class="cl">  <span class="k">let</span> <span class="n">hoist1</span><span class="o">:</span><span class="nn">Core</span><span class="p">.</span><span class="nn">Option</span><span class="p">.</span><span class="n">t_Option</span> <span class="n">v_T</span> <span class="o">=</span> <span class="n">out</span> <span class="k">in</span>
+</span></span><span class="line"><span class="cl">  <span class="k">let</span> <span class="n">hoist2</span><span class="o">:</span><span class="n">v_T</span> <span class="o">=</span> <span class="nn">Core</span><span class="p">.</span><span class="nn">Option</span><span class="p">.</span><span class="n">impl__unwrap</span> <span class="n">hoist1</span> <span class="k">in</span>
+</span></span><span class="line"><span class="cl">  <span class="k">let</span> <span class="o">(</span><span class="n">other</span><span class="o">:</span> <span class="n">t_Order</span><span class="o">):</span><span class="n">t_Order</span> <span class="o">=</span> <span class="nn">Core</span><span class="p">.</span><span class="nn">Convert</span><span class="p">.</span><span class="n">f_into</span> <span class="n">hoist2</span> <span class="k">in</span>
+</span></span><span class="line"><span class="cl">  <span class="k">let</span> <span class="n">other</span><span class="o">:</span><span class="n">t_Order</span> <span class="o">=</span> <span class="o">{</span> <span class="n">other</span> <span class="k">with</span> <span class="n">f_quantity</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">f_quantity</span> <span class="o">-!</span> <span class="n">m</span><span class="o">.</span><span class="n">f_quantity</span> <span class="o">}</span> <span class="k">in</span>
+</span></span><span class="line"><span class="cl">  <span class="k">let</span> <span class="n">other_side</span><span class="o">:</span><span class="nn">Alloc</span><span class="p">.</span><span class="nn">Collections</span><span class="p">.</span><span class="nn">Binary_heap</span><span class="p">.</span><span class="n">t_BinaryHeap</span> <span class="n">v_T</span> <span class="o">=</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">other</span><span class="o">.</span><span class="n">f_quantity</span> <span class="o">&gt;.</span> <span class="n">0uL</span>
+</span></span><span class="line"><span class="cl">    <span class="k">then</span>
+</span></span><span class="line"><span class="cl">      <span class="k">let</span> <span class="n">other_side</span><span class="o">:</span><span class="nn">Alloc</span><span class="p">.</span><span class="nn">Collections</span><span class="p">.</span><span class="nn">Binary_heap</span><span class="p">.</span><span class="n">t_BinaryHeap</span> <span class="n">v_T</span> <span class="o">=</span>
+</span></span><span class="line"><span class="cl">        <span class="nn">Alloc</span><span class="p">.</span><span class="nn">Collections</span><span class="p">.</span><span class="nn">Binary_heap</span><span class="p">.</span><span class="n">impl_9__push</span> <span class="n">other_side</span>
+</span></span><span class="line"><span class="cl">          <span class="o">(</span><span class="nn">Core</span><span class="p">.</span><span class="nn">Convert</span><span class="p">.</span><span class="n">f_from</span> <span class="o">(</span><span class="nn">Core</span><span class="p">.</span><span class="nn">Clone</span><span class="p">.</span><span class="n">f_clone</span> <span class="n">other</span> <span class="o">&lt;:</span> <span class="n">t_Order</span><span class="o">)</span> <span class="o">&lt;:</span> <span class="n">v_T</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">      <span class="k">in</span>
+</span></span><span class="line"><span class="cl">      <span class="n">other_side</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span> <span class="n">other_side</span>
+</span></span><span class="line"><span class="cl">  <span class="k">in</span>
+</span></span><span class="line"><span class="cl">  <span class="k">let</span> <span class="n">matches</span><span class="o">:</span><span class="nn">Alloc</span><span class="p">.</span><span class="nn">Vec</span><span class="p">.</span><span class="n">t_Vec</span> <span class="n">t_Match</span> <span class="nn">Alloc</span><span class="p">.</span><span class="nn">Alloc</span><span class="p">.</span><span class="n">t_Global</span> <span class="o">=</span>
+</span></span><span class="line"><span class="cl">    <span class="nn">Alloc</span><span class="p">.</span><span class="nn">Vec</span><span class="p">.</span><span class="n">impl_1__push</span> <span class="n">matches</span> <span class="n">m</span>
+</span></span><span class="line"><span class="cl">  <span class="k">in</span>
+</span></span><span class="line"><span class="cl">  <span class="k">done</span><span class="o">,</span> <span class="n">matches</span><span class="o">,</span> <span class="n">order</span><span class="o">,</span> <span class="n">other_side</span>
+</span></span><span class="line"><span class="cl"><span class="o">|</span> <span class="o">_</span> <span class="o">-&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">let</span> <span class="k">done</span><span class="o">:</span><span class="kt">bool</span> <span class="o">=</span> <span class="bp">true</span> <span class="k">in</span>
+</span></span><span class="line"><span class="cl">  <span class="k">done</span><span class="o">,</span> <span class="n">matches</span><span class="o">,</span> <span class="n">order</span><span class="o">,</span> <span class="n">other_side</span>
+</span></span></code></pre></div></details>
+<pre></pre>
+<p>Then the makefile calls F* on the generated output.
+The successful typechecking in F* proves two properties on the Rust code.</p>
+<h2 id="non-panicking-subtraction">Non-panicking subtraction<a hidden class="anchor" aria-hidden="true" href="#non-panicking-subtraction">#</a></h2>
+<p>First, it shows that the lines with</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="line"><span class="cl"><span class="n">order</span><span class="p">.</span><span class="n">quantity</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">quantity</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></div><p>do not underflow.</p>
+<p>Concretely, in Rust, the subtraction on <code>u64</code> integers is a partial
+operation: the subtraction of <code>x</code> and <code>y</code> (<code>x - y</code>) is defined only
+when <code>x</code> is greater or equal to <code>y</code> such that <code>x - y &gt;= 0</code>.</p>
+<p>Such a requirement cannot be expressed as a Rust type, thus Rust&rsquo;s
+subtraction panics (in debug mode) when it is called with bad
+inputs.</p>
+<p>In contrast, F* is ideal to express such types! We model Rust&rsquo;s
+subtraction as a total function with a strong type signature:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-ocaml" data-lang="ocaml"><span class="line"><span class="cl"><span class="k">val</span> <span class="o">(</span> <span class="o">-!</span> <span class="o">):</span> <span class="n">x</span><span class="o">:</span> <span class="n">u64</span> <span class="o">-&gt;</span> <span class="n">y</span><span class="o">:</span> <span class="n">u64</span> <span class="o">{</span><span class="n">x</span> <span class="o">&gt;=.</span> <span class="n">y</span><span class="o">}</span> <span class="o">-&gt;</span> <span class="n">u64</span>
+</span></span></code></pre></div><p>This strong signature implies a <em>proof obligation</em>: whenever this F*
+subtraction is used, F* won&rsquo;t typecheck unless it finds a proof that
+<code>x &gt;=. y</code> holds.</p>
+<p>Therefore, typechecking in F* implies that <code>order.quantity -= m.quantity;</code> never
+underflows.</p>
+<h2 id="non-panicking-unwrap">Non-panicking unwrap<a hidden class="anchor" aria-hidden="true" href="#non-panicking-unwrap">#</a></h2>
+<p>Second, it shows that</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="line"><span class="cl"><span class="n">other_side</span><span class="p">.</span><span class="n">pop</span><span class="p">().</span><span class="n">unwrap</span><span class="p">()</span><span class="w">
+</span></span></span></code></pre></div><p>never panics, i.e. the <code>pop</code> always returns <code>Some</code> value and thus <code>unwrap</code> never panics.</p>
+<p>Similarly to subtraction, in F*, using <code>unwrap</code> requires a proof that
+the option being unwrapped is not <code>None</code>.</p>
+<h1 id="call-to-action">Call to Action<a hidden class="anchor" aria-hidden="true" href="#call-to-action">#</a></h1>
+<p>hax is still under heavy development and there are many features we
+want to add, and many bugs to squash.
+We invite everyone to contribute to the project with new backends, contributing to the hax frontend or backend, or provide examples to exercise the tool.</p>
+<p>The F* backend is currently being developed by the Inria Prosecco
+team, the Coq backend by the Aarhus team, and an EasyCrypt backend is
+in the works by the EasyCrypt team. We are also working with the
+<a href="https://github.com/AeneasVerif/aeneas">Aeneas</a> project to allow
+better interoperability between their sophisticated stateful Rust
+verification toolchain and hax.</p>
+<h1 id="resources">Resources<a hidden class="anchor" aria-hidden="true" href="#resources">#</a></h1>
+<ul>
+<li><a href="https://hacspec.zulipchat.com/">Zulip</a></li>
+<li><a href="https://github.com/hacspec/hax">Git Repository</a></li>
+</ul>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Rust&rsquo;s internal ASTs are very optimized in memory and require constantly to lookup things interactively with the Rust compiler. Instead, our ASTs are indirection-free trees packing as much informations as possible (e.g. types, attributes, spans&hellip;), ready for direct consumption.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>The exporter expose big ASTs as JSON. The Rust type definitions of those ASTs are automatically converted into OCaml type definition along with JSON serializer and deserializers, using <a href="https://json-schema.org/">JSON Schemas</a>.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>The internal AST used by the hax engine is <a href="https://ocaml.org/docs/functors">functorized</a>. This enables AST transformations to be strongly typed.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/blog/tags/release/">Release</a></li>
+      <li><a href="http://localhost:1313/blog/tags/announcement/">Announcement</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="http://localhost:1313/blog/posts/announcement-tutorial/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Announcing the hax tutorial</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2024 <a href="http://localhost:1313/blog/">CryptoEng</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

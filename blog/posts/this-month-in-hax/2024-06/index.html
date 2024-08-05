@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=blog/livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>This month in hax: June 2024 | CryptoEng</title>
+<meta name="keywords" content="this-month-in-hax">
+<meta name="description" content="This first blog post inaugurates our series named &ldquo;This Month in hax&rdquo;: a series of short highlights of what happened in the development of hax and it&rsquo;s ecosystem in the month.
+In June, 23 PRs have been merged 🎉! The detail is available below.
+On the Rust side, we have updated the Rust compiler to a very recent nightly thanks to @Nadrieril! We also added support for more Rust features in the frontend (dyn Trait), more disciminant informations on ADTs, fixed various bugs, and improved the general experience of using hax.">
+<meta name="author" content="Lucas Franceschino">
+<link rel="canonical" href="http://localhost:1313/blog/posts/this-month-in-hax/2024-06/">
+<link crossorigin="anonymous" href="/blog/assets/css/stylesheet.1b82bbed8b13f853704558d527b681efaea938ce91e6ae8903e8b19e73b1b0f8.css" integrity="sha256-G4K77YsT&#43;FNwRVjVJ7aB766pOM6R5q6JA&#43;ixnnOxsPg=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/blog/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/blog/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/blog/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/blog/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/blog/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/blog/posts/this-month-in-hax/2024-06/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+  
+
+<meta property="og:title" content="This month in hax: June 2024" />
+<meta property="og:description" content="This first blog post inaugurates our series named &ldquo;This Month in hax&rdquo;: a series of short highlights of what happened in the development of hax and it&rsquo;s ecosystem in the month.
+In June, 23 PRs have been merged 🎉! The detail is available below.
+On the Rust side, we have updated the Rust compiler to a very recent nightly thanks to @Nadrieril! We also added support for more Rust features in the frontend (dyn Trait), more disciminant informations on ADTs, fixed various bugs, and improved the general experience of using hax." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/blog/posts/this-month-in-hax/2024-06/" /><meta property="og:image" content="http://localhost:1313/blog/papermod-cover.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-07-02T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-07-02T00:00:00+00:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://localhost:1313/blog/papermod-cover.png"/>
+
+<meta name="twitter:title" content="This month in hax: June 2024"/>
+<meta name="twitter:description" content="This first blog post inaugurates our series named &ldquo;This Month in hax&rdquo;: a series of short highlights of what happened in the development of hax and it&rsquo;s ecosystem in the month.
+In June, 23 PRs have been merged 🎉! The detail is available below.
+On the Rust side, we have updated the Rust compiler to a very recent nightly thanks to @Nadrieril! We also added support for more Rust features in the frontend (dyn Trait), more disciminant informations on ADTs, fixed various bugs, and improved the general experience of using hax."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://localhost:1313/blog/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "This month in hax: June 2024",
+      "item": "http://localhost:1313/blog/posts/this-month-in-hax/2024-06/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "This month in hax: June 2024",
+  "name": "This month in hax: June 2024",
+  "description": "This first blog post inaugurates our series named \u0026ldquo;This Month in hax\u0026rdquo;: a series of short highlights of what happened in the development of hax and it\u0026rsquo;s ecosystem in the month.\nIn June, 23 PRs have been merged 🎉! The detail is available below.\nOn the Rust side, we have updated the Rust compiler to a very recent nightly thanks to @Nadrieril! We also added support for more Rust features in the frontend (dyn Trait), more disciminant informations on ADTs, fixed various bugs, and improved the general experience of using hax.",
+  "keywords": [
+    "this-month-in-hax"
+  ],
+  "articleBody": "This first blog post inaugurates our series named “This Month in hax”: a series of short highlights of what happened in the development of hax and it’s ecosystem in the month.\nIn June, 23 PRs have been merged 🎉! The detail is available below.\nOn the Rust side, we have updated the Rust compiler to a very recent nightly thanks to @Nadrieril! We also added support for more Rust features in the frontend (dyn Trait), more disciminant informations on ADTs, fixed various bugs, and improved the general experience of using hax.\nWe pushed many fixes for the F* backend in the engine and improved the F* proof library. We also improved the bounded integer library and it’s F* integration.\nMerged Pull Requests Translate dyn Trait information fix(engine/fstar): use Base.String.hash instead of String.hash feat: add LICENSE Update rustc all at once refactor(engine/fstar-ast): get rid of zarith and GMP Update rustc fix(engine/fstar): fix implicit discrepancies in traits feat(nix): reduce closure size for hax-engine Generalize bounded ints Don’t use strings to represent paths Update rustc fix(backends/fstar): no __marker_trait if parent bounds feat(proof-libs): add t_Default feat(hax): logging: enable tracing in release, add trait-related logs fix(exporter): disable impl expr resolution under type aliases fix: rename action for extracting ml-kem feat: isolate DefId: faster build times fix(README): always begin relative path with ./, rewrite in action fix(ci): newer version of ppx_deriving (6.0.2) loops indefinitely Update to OCaml 5 Export discriminant values in AdtDef Update README.md Bump rustc version ",
+  "wordCount" : "242",
+  "inLanguage": "en",
+  "datePublished": "2024-07-02T00:00:00Z",
+  "dateModified": "2024-07-02T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Lucas Franceschino"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/blog/posts/this-month-in-hax/2024-06/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "CryptoEng",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/blog/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/blog/" accesskey="h" title="CryptoEng (Alt + H)">CryptoEng</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch"><li>|</li>
+                </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/blog/archives" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/blog/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/blog/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      This month in hax: June 2024
+    </h1>
+    <div class="post-meta"><span title='2024-07-02 00:00:00 +0000 UTC'>July 2, 2024</span>&nbsp;·&nbsp;2 min&nbsp;·&nbsp;Lucas Franceschino
+
+</div>
+  </header> 
+  <div class="post-content"><p>This first blog post inaugurates our series named &ldquo;This Month in hax&rdquo;:
+a series of short highlights of what happened in the development of
+hax and it&rsquo;s ecosystem in the month.</p>
+<p>In June, 23 PRs have been merged 🎉! The detail is available below.</p>
+<p>On the Rust side, we have updated the Rust compiler to a very recent
+nightly thanks to <a href="https://github.com/Nadrieril">@Nadrieril</a>! We also
+added support for more Rust features in the frontend (<a href="https://github.com/hacspec/hax/pull/741"><code>dyn Trait</code></a>), <a href="https://github.com/hacspec/hax/pull/693">more disciminant
+informations on ADTs</a>, fixed
+various bugs, and improved the general experience of using hax.</p>
+<p>We pushed many fixes for the F* backend in the engine and improved the
+F* proof library. We also improved the bounded integer library and
+it&rsquo;s F* integration.</p>
+<h1 id="merged-pull-requests">Merged Pull Requests<a hidden class="anchor" aria-hidden="true" href="#merged-pull-requests">#</a></h1>
+<ul>
+<li><a href="https://github.com/hacspec/hax/pull/741">Translate <code>dyn Trait</code> information</a></li>
+<li><a href="https://github.com/hacspec/hax/pull/740">fix(engine/fstar): use <code>Base.String.hash</code> instead of <code>String.hash</code></a></li>
+<li><a href="https://github.com/hacspec/hax/pull/736">feat: add LICENSE</a></li>
+<li><a href="https://github.com/hacspec/hax/pull/735">Update rustc all at once</a></li>
+<li><a href="https://github.com/hacspec/hax/pull/734">refactor(engine/fstar-ast): get rid of <code>zarith</code> and GMP</a></li>
+<li><a href="https://github.com/hacspec/hax/pull/733">Update rustc</a></li>
+<li><a href="https://github.com/hacspec/hax/pull/726">fix(engine/fstar): fix implicit discrepancies in traits</a></li>
+<li><a href="https://github.com/hacspec/hax/pull/724">feat(nix): reduce closure size for hax-engine</a></li>
+<li><a href="https://github.com/hacspec/hax/pull/723">Generalize bounded ints</a></li>
+<li><a href="https://github.com/hacspec/hax/pull/722">Don&rsquo;t use strings to represent paths</a></li>
+<li><a href="https://github.com/hacspec/hax/pull/721">Update rustc</a></li>
+<li><a href="https://github.com/hacspec/hax/pull/712">fix(backends/fstar): no <code>__marker_trait</code> if parent bounds</a></li>
+<li><a href="https://github.com/hacspec/hax/pull/711">feat(proof-libs): add <code>t_Default</code></a></li>
+<li><a href="https://github.com/hacspec/hax/pull/710">feat(hax): logging: enable tracing in release, add trait-related logs</a></li>
+<li><a href="https://github.com/hacspec/hax/pull/709">fix(exporter): disable impl expr resolution under type aliases</a></li>
+<li><a href="https://github.com/hacspec/hax/pull/704">fix: rename action for extracting ml-kem</a></li>
+<li><a href="https://github.com/hacspec/hax/pull/703">feat: isolate <code>DefId</code>: faster build times</a></li>
+<li><a href="https://github.com/hacspec/hax/pull/702">fix(README): always begin relative path with <code>./</code>, rewrite in action</a></li>
+<li><a href="https://github.com/hacspec/hax/pull/697">fix(ci): newer version of <code>ppx_deriving</code> (6.0.2) loops indefinitely</a></li>
+<li><a href="https://github.com/hacspec/hax/pull/694">Update to OCaml 5</a></li>
+<li><a href="https://github.com/hacspec/hax/pull/693">Export discriminant values in <code>AdtDef</code></a></li>
+<li><a href="https://github.com/hacspec/hax/pull/691">Update README.md</a></li>
+<li><a href="https://github.com/hacspec/hax/pull/690">Bump rustc version</a></li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/blog/tags/this-month-in-hax/">This-Month-in-Hax</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="http://localhost:1313/blog/posts/announcement-tutorial/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Announcing the hax tutorial</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2024 <a href="http://localhost:1313/blog/">CryptoEng</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

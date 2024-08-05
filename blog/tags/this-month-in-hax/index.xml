@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>This-Month-in-Hax on CryptoEng</title>
+    <link>http://localhost:1313/blog/tags/this-month-in-hax/</link>
+    <description>Recent content in This-Month-in-Hax on CryptoEng</description>
+    <image>
+      <title>CryptoEng</title>
+      <url>http://localhost:1313/blog/papermod-cover.png</url>
+      <link>http://localhost:1313/blog/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 02 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/blog/tags/this-month-in-hax/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>This month in hax: June 2024</title>
+      <link>http://localhost:1313/blog/posts/this-month-in-hax/2024-06/</link>
+      <pubDate>Tue, 02 Jul 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/posts/this-month-in-hax/2024-06/</guid>
+      <description>This first blog post inaugurates our series named &amp;ldquo;This Month in hax&amp;rdquo;: a series of short highlights of what happened in the development of hax and it&amp;rsquo;s ecosystem in the month.
+In June, 23 PRs have been merged 🎉! The detail is available below.
+On the Rust side, we have updated the Rust compiler to a very recent nightly thanks to @Nadrieril! We also added support for more Rust features in the frontend (dyn Trait), more disciminant informations on ADTs, fixed various bugs, and improved the general experience of using hax.</description>
+    </item>
+    
+  </channel>
+</rss>
