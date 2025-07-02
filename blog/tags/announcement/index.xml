@@ -9,17 +9,16 @@
       <url>https://cryptoeng.de/blog/papermod-cover.png</url>
       <link>https://cryptoeng.de/blog/papermod-cover.png</link>
     </image>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo -- 0.147.9</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 05 Aug 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://cryptoeng.de/blog/tags/announcement/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 05 Aug 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://cryptoeng.de/blog/tags/announcement/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>High Assurance Post-Quantum Cryptography for IoT</title>
       <link>https://cryptoeng.de/blog/posts/iot-pqc-announce/</link>
       <pubDate>Mon, 05 Aug 2024 00:00:00 +0000</pubDate>
-      
       <guid>https://cryptoeng.de/blog/posts/iot-pqc-announce/</guid>
       <description>Securing the Internet of Things in the age of Quantum Computers.</description>
     </item>
-    
   </channel>
 </rss>

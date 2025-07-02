@@ -9,17 +9,25 @@
       <url>https://cryptoeng.de/blog/papermod-cover.png</url>
       <link>https://cryptoeng.de/blog/papermod-cover.png</link>
     </image>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo -- 0.147.9</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 05 Aug 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://cryptoeng.de/blog/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 02 Jul 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://cryptoeng.de/blog/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Pushing the Boundaries of PQC for IoT</title>
+      <link>https://cryptoeng.de/blog/posts/iot-pqc-06-2025/</link>
+      <pubDate>Wed, 02 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://cryptoeng.de/blog/posts/iot-pqc-06-2025/</guid>
+      <description>&lt;p&gt;We&amp;rsquo;re dedicated to bringing robust, next-generation cryptography to even the most resource-constrained devices. One direction of ongoing work has focused heavily on implementing and optimizing the NIST-standardized post-quantum cryptographic algorithms, ML-KEM (formerly Kyber) and ML-DSA (formerly Dilithium), along with the SHA-3 hash function, specifically for the Internet of Things (IoT) ecosystem. All of our technical work and results are open source and available on our &lt;a href=&#34;https://github.com/cryspen/libcrux-iot/&#34;&gt;Github repository&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;balancing-performance-memory-and-security-on-iot&#34;&gt;Balancing Performance, Memory, and Security on IoT&lt;/h3&gt;
+&lt;p&gt;Developing cryptography for embedded devices in a high-level language like Rust presents unique challenges. IoT devices operate with drastically reduced memory, especially low-latency RAM, and load operations are particularly costly. Our goal isn&amp;rsquo;t necessarily to achieve the absolute fastest implementation, but to provide a formally verifiable solution that is easy to use and offers best in class performance. This requires tight control over memory and operations to ensure optimal pipelining effects and memory access patterns.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>High Assurance Post-Quantum Cryptography for IoT</title>
       <link>https://cryptoeng.de/blog/posts/iot-pqc-announce/</link>
       <pubDate>Mon, 05 Aug 2024 00:00:00 +0000</pubDate>
-      
       <guid>https://cryptoeng.de/blog/posts/iot-pqc-announce/</guid>
       <description>Securing the Internet of Things in the age of Quantum Computers.</description>
     </item>
-    
   </channel>
 </rss>

@@ -9,35 +9,30 @@
       <url>https://cryptoeng.de/blog/papermod-cover.png</url>
       <link>https://cryptoeng.de/blog/papermod-cover.png</link>
     </image>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo -- 0.147.9</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 05 Aug 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://cryptoeng.de/blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 02 Jul 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://cryptoeng.de/blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>IoT</title>
+      <link>https://cryptoeng.de/blog/tags/iot/</link>
+      <pubDate>Wed, 02 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://cryptoeng.de/blog/tags/iot/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>PQ</title>
+      <link>https://cryptoeng.de/blog/tags/pq/</link>
+      <pubDate>Wed, 02 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>https://cryptoeng.de/blog/tags/pq/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Announcement</title>
       <link>https://cryptoeng.de/blog/tags/announcement/</link>
       <pubDate>Mon, 05 Aug 2024 00:00:00 +0000</pubDate>
-      
       <guid>https://cryptoeng.de/blog/tags/announcement/</guid>
       <description></description>
     </item>
-    
-    <item>
-      <title>IoT</title>
-      <link>https://cryptoeng.de/blog/tags/iot/</link>
-      <pubDate>Mon, 05 Aug 2024 00:00:00 +0000</pubDate>
-      
-      <guid>https://cryptoeng.de/blog/tags/iot/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>PQ</title>
-      <link>https://cryptoeng.de/blog/tags/pq/</link>
-      <pubDate>Mon, 05 Aug 2024 00:00:00 +0000</pubDate>
-      
-      <guid>https://cryptoeng.de/blog/tags/pq/</guid>
-      <description></description>
-    </item>
-    
   </channel>
 </rss>
